@@ -4,7 +4,10 @@ on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
     steps:
       - run: gh issue comment 302 --body "$PAYLOAD"
         env:
+          GH_TOKEN: ${{github.token}}
           PAYLOAD: ${{ secrets.TEST_SECRET }}
