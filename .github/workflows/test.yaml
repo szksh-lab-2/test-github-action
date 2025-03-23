@@ -1,13 +1,10 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
+      - run: gh issue comment 302 --body "$PAYLOAD"
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          PAYLOAD: ${{ secrets.TEST_SECRET }}
