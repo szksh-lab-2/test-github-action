@@ -7,7 +7,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - run: gh issue comment 302 --body "$PAYLOAD"
+      - run: gh issue comment 303 --body "$PAYLOAD"
         env:
           GH_TOKEN: ${{github.token}}
           PAYLOAD: ${{ secrets.TEST_SECRET }}
