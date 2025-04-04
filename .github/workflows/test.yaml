@@ -4,7 +4,7 @@ on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
-    environment: ""
+    environment: null
     steps:
       - run: echo "$PAYLOAD"
         env:
