@@ -4,6 +4,8 @@ on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
       - run: echo "zoo" > zoo.txt
       - uses: suzuki-shunsuke/commit-action@feat-parent-branch
