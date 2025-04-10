@@ -8,6 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - run: echo "zoo" > zoo.txt
+      - uses: suzuki-shunsuke/commit-action@feat-parent-branch
+        with:
+          files: zoo.txt
+          parent_branch: test-forbid-tag
