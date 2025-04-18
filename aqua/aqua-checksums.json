@@ -1,0 +1,29 @@
+{
+  "checksums": [
+    {
+      "id": "http/dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-518.0.0-darwin-arm.tar.gz",
+      "checksum": "9A51ACC5B188DCDCD47794087AE3E9898508C9A83356F260081D7EFD6A92C6F4",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-518.0.0-darwin-x86_64.tar.gz",
+      "checksum": "66E258F79B29AE85A5424035362805E0AD6645C69C21A517D7BCB1AFAAB8E6CD",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-518.0.0-linux-arm.tar.gz",
+      "checksum": "308F7F55DD3F6954FD9EBA99E681D990391780E93B3071EB23B5C3F33B136761",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "http/dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-518.0.0-linux-x86_64.tar.gz",
+      "checksum": "31B3784CED4A7169FC6B1B049A27A9BFC6FA7E6AC56687F3E14552FC0B1DD2DB",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.346.1/registry.yaml",
+      "checksum": "64B406FB650A56A2039D0C47DBF18A855826497910D2DF43C091F47350B7EFD8",
+      "algorithm": "sha256"
+    }
+  ]
+}
