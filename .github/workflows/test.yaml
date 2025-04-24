@@ -1,13 +1,33 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      pull-requests: write
     steps:
-      - run: echo "$PAYLOAD"
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            bench
+          sparse-checkout-cone-mode: false
+      - uses: aquaproj/aqua-installer@5e54e5cee8a95ee2ce7c04cb993da6dfad13e59c # v3.1.2
+        with:
+          aqua_version: v2.50.0
+          working_directory: bench
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          AQUA_GITHUB_TOKEN: ${{github.token}}
+      - run: mkghtag -version
+        working-directory: bench
+      - run: hyperfine --version
+        working-directory: bench
+      - run: hyperfine --warmup 3 --export-json bench1.json "mkghtag -version"
+        working-directory: bench
+      - run: |
+          p=$(aqua which mkghtag)
+          hyperfine --warmup 3 --export-json bench2.json "$p -version"
+          hyperfine --warmup 3 --export-json bench3.json "mkghtag -version" "$p -version"
+        working-directory: bench
