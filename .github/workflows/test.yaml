@@ -31,3 +31,8 @@ jobs:
           hyperfine --warmup 3 --export-json bench2.json "$p -version"
           hyperfine --warmup 3 --export-json bench3.json "mkghtag -version" "$p -version"
         working-directory: bench
+      - run: |
+          p=$(aqua which mkghtag)
+          hyperfine --warmup 3 --export-json bench2.json "$p -version"
+          hyperfine --warmup 3 --export-json bench3.json "mkghtag -version" "$p -version"
+        working-directory: bench2
