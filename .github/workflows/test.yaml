@@ -1,12 +1,11 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions: {}
+    timeout-minutes: 10
     steps:
       - run: |
           echo "GITHUB_REF: $GITHUB_REF"
