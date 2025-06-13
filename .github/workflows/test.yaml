@@ -9,5 +9,5 @@ jobs:
         with:
           aqua_version: v2.53.2
       - run: pinact run --check
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
