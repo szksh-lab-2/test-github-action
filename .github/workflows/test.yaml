@@ -5,4 +5,4 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: cat "$GITHUB_EVENT_PATH"
+      - uses: actions/checkout@v4
