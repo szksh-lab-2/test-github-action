@@ -5,13 +5,6 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: test -n "$TEST_ENV"
+      - run: test -n "$FOO"
         env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-  bar:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
+          FOO: ${{secrets.FOO}}
