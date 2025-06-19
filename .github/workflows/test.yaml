@@ -1,13 +1,13 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions: {}
+    timeout-minutes: 10
     steps:
-      - run: echo "$PAYLOAD"
+      - run: echo "hello"
+        if: "false" # Thsi step is always skipped
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          PAYLOAD: ${{ fromJSON("") }} # This always causes an error
