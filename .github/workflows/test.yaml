@@ -11,6 +11,7 @@ jobs:
       - run: |
           echo 'foo={"title": "hello"}' >> "$GITHUB_OUTPUT"
         id: title
+        if: always()
       - run: echo "$TITLE"
         env:
           TITLE: ${{fromJSON(steps.title.outputs.foo).title}} # This always causes an error
