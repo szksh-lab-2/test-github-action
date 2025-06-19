@@ -7,7 +7,10 @@ jobs:
     permissions: {}
     timeout-minutes: 10
     steps:
-      - run: echo "hello"
-        if: "false" # Thsi step is always skipped
+      # - run: exit 1
+      - run: |
+          echo 'foo={"title": "hello"}' >> "$GITHUB_OUTPUT"
+        id: title
+      - run: echo "$TITLE"
         env:
-          PAYLOAD: ${{ false && fromJSON('') || ''}} # This always causes an error
+          TITLE: ${{fromJSON(steps.title.outputs.foo).title}} # This always causes an error
