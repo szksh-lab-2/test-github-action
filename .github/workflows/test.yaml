@@ -10,4 +10,4 @@ jobs:
       - run: echo "hello"
         if: "false" # Thsi step is always skipped
         env:
-          PAYLOAD: ${{ fromJSON("") }} # This always causes an error
+          PAYLOAD: ${{ fromJSON('') }} # This always causes an error
