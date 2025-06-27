@@ -1,0 +1,13 @@
+---
+name: test
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "$PAYLOAD"
+        env:
+          PAYLOAD: ${{ toJson(github.event) }}

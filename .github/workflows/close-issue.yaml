@@ -1,0 +1,20 @@
+---
+name: Close a new Issue without an issue template
+on:
+  issues:
+    types: [opened]
+jobs:
+  close-new-issue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      issues: write
+    if: "false"
+    steps:
+      - uses: suzuki-shunsuke/issue-close-lock-action@v0.1.0
+        with:
+          issue_number: ${{github.event.issue.number}}
+          message: |
+            This issue is closed because this issue was created without an issue template probably.
+            Please create an issue with an issue template.
+            https://github.com/suzuki-shunsuke/test-github-action/issues/new/choose
