@@ -10,7 +10,7 @@ jobs:
       - run: sleep 3600
   status-check:
     runs-on: ubuntu-24.04
-    if: failure()
+    if: failure() || cancelled()
     timeout-minutes: 10
     permissions: {}
     needs:
