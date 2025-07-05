@@ -10,7 +10,7 @@ jobs:
       - run: sleep 3600
   status-check:
     runs-on: ubuntu-24.04
-    if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+    if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
     timeout-minutes: 10
     permissions: {}
     needs:
