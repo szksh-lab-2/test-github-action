@@ -7,7 +7,7 @@ jobs:
     permissions: {}
     timeout-minutes: 1
     steps:
-      - run: echo "hello"
+      - run: sleep 3600
   status-check:
     runs-on: ubuntu-24.04
     if: always() && failure()
