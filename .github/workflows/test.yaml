@@ -3,11 +3,8 @@ name: test
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    uses: ./.github/workflows/wc-test.yaml
     permissions: {}
-    timeout-minutes: 1
-    steps:
-      - run: sleep 3600
   status-check:
     runs-on: ubuntu-24.04
     if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
