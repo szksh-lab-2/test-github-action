@@ -10,7 +10,7 @@ jobs:
       - run: echo "hello"
   status-check:
     runs-on: ubuntu-24.04
-    if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
+    if: always() && failure()
     timeout-minutes: 10
     permissions: {}
     needs:
