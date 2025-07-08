@@ -5,6 +5,9 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
       - run: echo "foo" > foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/167
 
