@@ -11,10 +11,11 @@ jobs:
         with:
           persist-credentials: false
       - run: |
-          echo foo > foo.txt
-          echo foo > bar.txt
+          echo bar > foo.txt
+          echo zoo > bar.txt
       - uses: suzuki-shunsuke/commit-action@pr/167
         with:
           commit_message: "chore: update foo.txt"
           files: foo.txt
-          branch: test-commit-action-pr-167-2
+          branch: test-commit-action-pr-167-3
+          parent_branch: test-commit-action-pr-167
