@@ -20,5 +20,5 @@ jobs:
           repository: szksh-lab-2/test-github-action-2
           branch: test-commit-action-pr-167-3
           parent_branch: main
-          app_id: ${{ secrets.APP_ID }}
+          app_id: ${{ vars.APP_ID }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
