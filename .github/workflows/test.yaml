@@ -10,5 +10,5 @@ jobs:
       - uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
-      - run: echo "foo" > foo.txt
+      - run: rm foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/167
