@@ -10,5 +10,11 @@ jobs:
       - uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
-      - run: rm foo.txt
+      - run: |
+          echo foo > foo.txt
+          echo foo > bar.txt
       - uses: suzuki-shunsuke/commit-action@pr/167
+        with:
+          commit_message: "chore: update foo.txt"
+          files: foo.txt
+          branch: test-commit-action-pr-167-2
