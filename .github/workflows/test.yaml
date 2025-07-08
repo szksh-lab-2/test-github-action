@@ -12,7 +12,4 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "foo" > foo.txt
-      - uses: suzuki-shunsuke/commit-action@pr/167
-        with:
-          github_token: ${{ github.token }}
-
+      - uses: suzuki-shunsuke/commit-action@v0.0.8
