@@ -17,5 +17,8 @@ jobs:
         with:
           commit_message: "chore: update foo.txt"
           files: foo.txt
+          repository: suzuki-shunsuke/test-github-action-2
           branch: test-commit-action-pr-167-3
-          parent_branch: test-commit-action-pr-167
+          parent_branch: main
+          app_id: ${{ secrets.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
