@@ -17,7 +17,7 @@ jobs:
         with:
           commit_message: "chore: update foo.txt"
           files: foo.txt
-          repository: suzuki-shunsuke/test-github-action-2
+          repository: szksh-lab-2/test-github-action-2
           branch: test-commit-action-pr-167-3
           parent_branch: main
           app_id: ${{ secrets.APP_ID }}
