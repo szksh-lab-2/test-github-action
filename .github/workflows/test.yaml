@@ -6,8 +6,8 @@ jobs:
     timeout-minutes: 10
     # permissions: {}
     permissions:
-      issues: write
-    #   contents: read
+      # issues: write
+      contents: read
     steps:
       # - run: gh issue create -R "$GITHUB_REPOSITORY" -t test -b test
       #   env:
