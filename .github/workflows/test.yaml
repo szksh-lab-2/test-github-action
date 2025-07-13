@@ -4,10 +4,10 @@ jobs:
   create_issue:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    permissions: {}
-    # permissions:
-    #   issues: write
-    #   contents: read
+    # permissions: {}
+    permissions:
+      issues: write
+      # contents: read
     steps:
       - run: gh issue create -R "$GITHUB_REPOSITORY" -t test -b test
         env:
