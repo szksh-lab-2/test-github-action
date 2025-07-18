@@ -13,34 +13,78 @@ jobs:
       contents: read # To list commits in pull requests
     steps:
       - id: param
-        env:
-          REPO: ${{ github.event.repository.name }}
-        run: |
-          {
-            echo "trusted_apps<<EOF"
-            echo "foo"
-            echo "renovate"
-            echo "dependabot"
-            echo "EOF"
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const defaultConfig = {
+              trusted_apps: [
+                "foo",
+                "renovate",
+                "dependabot"
+              ].join("\n"),
+              untrusted_machine_users: [
+                "bar"
+              ].join("\n"),
+            };
 
-            echo "untrusted_machine_users<<EOF"
-            echo "bar"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+            const data = {
+              "test-github-action": {
+                trusted_apps: [
+                  "renovate",
+                  "dependabot"
+                ],
+                untrusted_machine_users: [
+                  "*bot"
+                ]
+              },
+            };
 
-          if [ "$REPO" = test-github-action ]; then
-            {
-              echo "trusted_apps<<EOF"
-              echo "renovate"
-              echo "dependabot"
-              echo "EOF"
+            const cfg = data[context.repo().repo];
+            if (cfg) {
+              return {
+                trusted_apps: cfg.trusted_apps.join("\n"),
+                untrusted_machine_users: cfg.untrusted_machine_users.join("\n"),
+              };
+            }
+            return defaultConfig;
 
-              echo "untrusted_machine_users<<EOF"
-              echo "*bot"
-              echo "EOF"
-            } >> "$GITHUB_OUTPUT"
-          fi
+      # - id: param
+      #   env:
+      #     REPO: ${{ github.event.repository.name }}
+      #     DEFAULT_TRUSTED_APPS: |
+      #       foo
+      #       renovate
+      #       dependabot
+      #     DEFAULT_UNTRUSTED_MACHINE_USERS: |
+      #       bar
+      #     TEST_GITHUB_ACTION_TRUSTED_APPS: |
+      #       renovate
+      #       dependabot
+      #     TEST_GITHUB_ACTION_UNTRUSTED_MACHINE_USERS: |
+      #       *bot
+      #   run: |
+      #     {
+      #       echo "trusted_apps<<EOF"
+      #       echo "$DEFAULT_TRUSTED_APPS"
+      #       echo "EOF"
+
+      #       echo "untrusted_machine_users<<EOF"
+      #       echo "$DEFAULT_UNTRUSTED_MACHINE_USERS"
+      #       echo "EOF"
+      #     } >> "$GITHUB_OUTPUT"
+
+      #     if [ "$REPO" = test-github-action ]; then
+      #       {
+      #         echo "trusted_apps<<EOF"
+      #         echo "$TEST_GITHUB_ACTION_TRUSTED_APPS"
+      #         echo "EOF"
+
+      #         echo "untrusted_machine_users<<EOF"
+      #         echo "$TEST_GITHUB_ACTION_UNTRUSTED_MACHINE_USERS"
+      #         echo "EOF"
+      #       } >> "$GITHUB_OUTPUT"
+      #     fi
       - uses: suzuki-shunsuke/validate-pr-review-action@8ec7a0e3cc3fbec168aee3cd1014225ab0e257c3 # v0.0.7
         with:
-          trusted_apps: ${{steps.param.outputs.trusted_apps}}
-          untrusted_machine_users: ${{steps.param.outputs.untrusted_machine_users}}
+          trusted_apps: ${{fromJSON(steps.param.outputs.result).trusted_apps}}
+          untrusted_machine_users: ${{fromJSON(steps.param.outputs.result).untrusted_machine_users}}
