@@ -15,28 +15,36 @@ jobs:
       - id: param
         env:
           REPO: ${{ github.event.repository.name }}
+          DEFAULT_TRUSTED_APPS: |
+            foo
+            renovate
+            dependabot
+          DEFAULT_UNTRUSTED_MACHINE_USERS: |
+            bar
+          TEST_GITHUB_ACTION_TRUSTED_APPS: |
+            renovate
+            dependabot
+          TEST_GITHUB_ACTION_UNTRUSTED_MACHINE_USERS: |
+            *bot
         run: |
           {
             echo "trusted_apps<<EOF"
-            echo "foo"
-            echo "renovate"
-            echo "dependabot"
+            echo "$DEFAULT_TRUSTED_APPS"
             echo "EOF"
 
             echo "untrusted_machine_users<<EOF"
-            echo "bar"
+            echo "$DEFAULT_UNTRUSTED_MACHINE_USERS"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
           if [ "$REPO" = test-github-action ]; then
             {
               echo "trusted_apps<<EOF"
-              echo "renovate"
-              echo "dependabot"
+              echo "$TEST_GITHUB_ACTION_TRUSTED_APPS"
               echo "EOF"
 
               echo "untrusted_machine_users<<EOF"
-              echo "*bot"
+              echo "$TEST_GITHUB_ACTION_UNTRUSTED_MACHINE_USERS"
               echo "EOF"
             } >> "$GITHUB_OUTPUT"
           fi
