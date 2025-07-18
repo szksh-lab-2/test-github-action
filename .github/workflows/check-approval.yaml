@@ -1,0 +1,41 @@
+name: Require approval
+on:
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+jobs:
+  require-approval:
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: read # To get pull requests
+      contents: read # To list commits in pull requests
+    steps:
+      - id: param
+        env:
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          echo "trusted_apps<<EOF
+          foo
+          renovate
+          dependabot
+          EOF" >> "$GITHUB_OUTPUT"
+          echo "untrusted_machine_users<<EOF
+          bar
+          EOF" >> "$GITHUB_OUTPUT"
+
+          if [ "$REPO" = test-github-action ]; then
+            echo "trusted_apps<<EOF
+            renovate
+            dependabot
+            EOF" >> "$GITHUB_OUTPUT"
+
+            echo "untrusted_machine_users<<EOF
+            *bot
+            EOF" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: suzuki-shunsuke/validate-pr-review-action@8ec7a0e3cc3fbec168aee3cd1014225ab0e257c3 # v0.0.7
+        with:
+          trusted_apps: ${{steps.param.outputs.trusted_apps}}
+          untrusted_machine_users: ${{steps.param.outputs.untrusted_machine_users}}
