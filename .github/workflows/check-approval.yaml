@@ -16,24 +16,29 @@ jobs:
         env:
           REPO: ${{ github.event.repository.name }}
         run: |
-          echo "trusted_apps<<EOF
-          foo
-          renovate
-          dependabot
-          EOF" >> "$GITHUB_OUTPUT"
-          echo "untrusted_machine_users<<EOF
-          bar
-          EOF" >> "$GITHUB_OUTPUT"
+          {
+            echo "trusted_apps<<EOF"
+            echo "foo"
+            echo "renovate"
+            echo "dependabot"
+            echo "EOF"
+
+            echo "untrusted_machine_users<<EOF"
+            echo "bar"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
           if [ "$REPO" = test-github-action ]; then
-            echo "trusted_apps<<EOF
-            renovate
-            dependabot
-            EOF" >> "$GITHUB_OUTPUT"
+            {
+              echo "trusted_apps<<EOF"
+              echo "renovate"
+              echo "dependabot"
+              echo "EOF"
 
-            echo "untrusted_machine_users<<EOF
-            *bot
-            EOF" >> "$GITHUB_OUTPUT"
+              echo "untrusted_machine_users<<EOF"
+              echo "*bot"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
           fi
       - uses: suzuki-shunsuke/validate-pr-review-action@8ec7a0e3cc3fbec168aee3cd1014225ab0e257c3 # v0.0.7
         with:
