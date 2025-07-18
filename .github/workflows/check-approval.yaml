@@ -39,7 +39,7 @@ jobs:
               },
             };
 
-            const cfg = data[context.repo().repo];
+            const cfg = data[context.repo.repo];
             if (cfg) {
               return {
                 trusted_apps: cfg.trusted_apps.join("\n"),
