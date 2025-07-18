@@ -28,7 +28,7 @@ jobs:
             };
 
             const data = {
-              "test-github-action": {
+              "test-github-action-2": {
                 trusted_apps: [
                   "renovate",
                   "dependabot"
