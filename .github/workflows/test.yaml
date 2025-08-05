@@ -5,12 +5,12 @@ jobs:
   foo:
     runs-on: ubuntu-24.04
     steps:
-      - run: exit 1
+      - run: exit 0
   bar:
     runs-on: ubuntu-24.04
     needs: foo
     steps:
-      - run: exit 0
+      - run: exit 1
   zoo:
     runs-on: ubuntu-24.04
     needs:
