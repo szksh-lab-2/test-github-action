@@ -9,8 +9,17 @@ jobs:
   bar:
     runs-on: ubuntu-24.04
     needs: foo
+    env:
+      FOO: ${{matrix.target}}
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - foo
+          - bar
     steps:
-      - run: exit 1
+      - run: |
+          test "$FOO" = foo
   zoo:
     runs-on: ubuntu-24.04
     needs:
