@@ -1,13 +1,18 @@
 ---
-name: test
-on:
-  push:
-    tags:
-      - v*
+name: rustc version
+on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        runs-on:
+          - windows-latest
+          - ubuntu-24.04
+          - macos-13
+          - ubuntu-24.04-arm
+          - macos-14
+    runs-on: ${{ matrix.runs-on }}
+    permissions: {}
+    timeout-minutes: 10
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - run: rustc --version
