@@ -15,4 +15,8 @@ jobs:
     permissions: {}
     timeout-minutes: 10
     steps:
+      - uses: rustup update
+        if: matrix.runs-on == 'ubuntu-24.04-arm'
+      # - uses: actions-rust-lang/setup-rust-toolchain@v1
+      #   if: matrix.runs-on == 'ubuntu-24.04-arm'
       - run: rustc --version
