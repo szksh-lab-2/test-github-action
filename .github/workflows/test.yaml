@@ -1,13 +1,20 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
-      - run: echo "$PAYLOAD"
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          ref: ${{ github.head_ref }}
+      - run: gh auth setup-git
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          GH_HOST: github.com
+      - run: git tag v0.10.0
+      - run: git push origin v0.10.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
