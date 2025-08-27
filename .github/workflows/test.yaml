@@ -1,13 +1,15 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions: write-all
+    # contents: write
+    # packages: write
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@v4.2.2
+        with:
+          persist-credentials: false
+      - run: echo "foo" > foo.txt
+      - uses: suzuki-shunsuke/commit-action@v0.0.8
