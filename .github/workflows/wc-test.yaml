@@ -2,16 +2,9 @@
 name: wc-test
 on: workflow_call
 jobs:
-  foo:
+  test:
     runs-on: ubuntu-24.04
+    permissions: {}
+    timeout-minutes: 1
     steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-  bar:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
+      - run: sleep 3600
