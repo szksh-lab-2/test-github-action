@@ -7,28 +7,16 @@ on:
         description: 'The access token to revoke'
         required: true
         type: string
-      test:
-        description: 'The access token to revoke'
-        required: true
-        type: string
-      test2:
-        description: 'The access token to revoke'
-        required: true
-        type: string
 jobs:
   revoke:
     timeout-minutes: 10
     runs-on: ubuntu-24.04
     permissions: {}
     steps:
-      - name: Mask the access token
-        run: echo "::add-mask::${{inputs.access_token}}"
-      - run: echo ${{inputs.test}}
-      - run: echo ${{inputs.test2}}
-      - name: Check if the access token is valid
-        continue-on-error: true
+      - name: Check if the access token is available
+        continue-on-error: true # Continue even if the access token is unavailable
         env:
-          GH_TOKEN: ${{inputs.access_token}}
+          GH_TOKEN: ${{inputs.access_token}} # GitHub Actions automatically masks access tokens
         run: |
           gh api \
             -H "Accept: application/vnd.github+json" \
@@ -36,7 +24,7 @@ jobs:
             /user
       - name: Revoke the access token
         env:
-          GH_TOKEN: ${{inputs.access_token}}
+          GH_TOKEN: ${{inputs.access_token}} # GitHub Actions automatically masks access tokens
           CLIENT_ID: ${{secrets.CLIENT_ID}}
           CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
         run: |
