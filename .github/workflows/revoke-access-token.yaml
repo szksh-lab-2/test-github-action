@@ -1,0 +1,39 @@
+---
+name: Revoke a User Access Token
+on:
+  workflow_dispatch:
+    inputs:
+      access_token:
+        description: 'The access token to revoke'
+        required: true
+        type: string
+jobs:
+  revoke:
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+      - name: Mask the access token
+        run: echo "::add-mask::${{inputs.access_token}}"
+      - name: Check if the access token is valid
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{inputs.access_token}}
+        run: |
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /user
+      - name: Revoke the access token
+        env:
+          GH_TOKEN: ${{inputs.access_token}}
+          CLIENT_ID: ${{secrets.CLIENT_ID}}
+          CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+        run: |
+          curl -L \
+            -X DELETE \
+            -H "Accept: application/vnd.github+json" \
+            -u "${CLIENT_ID}:${CLIENT_SECRET}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/applications/${CLIENT_ID}/token" \
+            -d '{"access_token":"'"${GH_TOKEN}"'"}'
