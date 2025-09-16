@@ -84,7 +84,7 @@ jobs:
       #         echo "EOF"
       #       } >> "$GITHUB_OUTPUT"
       #     fi
-      - uses: suzuki-shunsuke/validate-pr-review-action@8ec7a0e3cc3fbec168aee3cd1014225ab0e257c3 # v0.0.7
+      - uses: suzuki-shunsuke/validate-pr-review-action@0c25fcf52b765e1d27fdc9dac0d3c7f854a009f2 # v0.0.8
         with:
           trusted_apps: ${{fromJSON(steps.param.outputs.result).trusted_apps}}
           untrusted_machine_users: ${{fromJSON(steps.param.outputs.result).untrusted_machine_users}}
