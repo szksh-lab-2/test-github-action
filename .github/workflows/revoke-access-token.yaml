@@ -7,6 +7,14 @@ on:
         description: 'The access token to revoke'
         required: true
         type: string
+      test:
+        description: 'The access token to revoke'
+        required: true
+        type: string
+      test2:
+        description: 'The access token to revoke'
+        required: true
+        type: string
 jobs:
   revoke:
     timeout-minutes: 10
@@ -15,6 +23,8 @@ jobs:
     steps:
       - name: Mask the access token
         run: echo "::add-mask::${{inputs.access_token}}"
+      - run: echo ${{inputs.test}}
+      - run: echo ${{inputs.test2}}
       - name: Check if the access token is valid
         continue-on-error: true
         env:
