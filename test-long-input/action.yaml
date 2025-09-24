@@ -4,7 +4,5 @@ inputs:
     description: The text to post as a comment.
     required: true
 runs:
-  using: composite
-  steps:
-    - shell: bash
-      run: echo "hello"
+  using: node20
+  main: index.js
