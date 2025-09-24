@@ -1,0 +1,8 @@
+name: Test long input
+inputs:
+  text:
+    description: The text to post as a comment.
+    required: true
+runs:
+  using: node24
+  main: index.js
