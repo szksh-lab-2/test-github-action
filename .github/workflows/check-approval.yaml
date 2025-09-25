@@ -1,9 +1,8 @@
 name: Require approval
 on:
-  pull_request_review:
-    types:
-      - submitted
-      - dismissed
+  push:
+    branches:
+      - dummy
 jobs:
   require-approval:
     timeout-minutes: 10
