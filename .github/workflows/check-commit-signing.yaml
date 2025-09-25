@@ -2,7 +2,7 @@
 name: Check if all commits are signed
 on:
   pull_request_target:
-    branches: [main]
+    branches: [dummy]
 concurrency:
   group: ${{ github.workflow }}--${{ github.head_ref }} # github.ref is unavailable in case of pull_request_target
   cancel-in-progress: true
