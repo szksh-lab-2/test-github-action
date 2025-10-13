@@ -13,7 +13,12 @@ jobs:
               q: "filename:.goreleaser.yml user:suzuki-shunsuke",
               per_page: 100,
             });
-            return data;
+            return data.map(item => {
+              return {
+                nameWithOwner: item.repository.full_name,
+                path: item.path,
+              };
+            });
       - run: echo "${RESULT}"
         env:
           RESULT: ${{ steps.list.outputs.result }}
