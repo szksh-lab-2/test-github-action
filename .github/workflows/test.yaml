@@ -26,6 +26,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        number:
+          - 1
+          - 2
         age: ${{ fromJSON(needs.test.outputs.ages) }}
     steps:
       - run: echo "$NUMBER $AGE"
