@@ -2,6 +2,10 @@
 name: test
 on: pull_request
 jobs:
+  foo:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "foo"
   test:
     runs-on: ubuntu-24.04
     env:
@@ -266,6 +270,5 @@ jobs:
           - 254
           - 255
           - 256
-          - 257
     steps:
       - run: echo "$NUMBER"
