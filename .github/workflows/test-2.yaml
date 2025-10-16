@@ -1,9 +1,9 @@
 ---
-name: test
+name: test 2
 on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: sleep 10
-      - run: echo "succeed"
+      - run: echo "fail"
+
