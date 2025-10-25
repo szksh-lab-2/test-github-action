@@ -4,14 +4,8 @@ on: workflow_call
 jobs:
   foo:
     runs-on: ubuntu-24.04
+    permissions: {}
+    timeout-minutes: 5
     steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-  bar:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: test -n "$TEST_ENV"
-        env:
-          TEST_ENV: ${{vars.TEST_ENV}}
-
+      - run: echo "$GITHUB_WORKFLOW_SHA"
+      - run: echo "$GITHUB_WORKFLOW_REF"
