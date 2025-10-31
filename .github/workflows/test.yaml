@@ -7,6 +7,8 @@ jobs:
     steps:
       - run: |
           echo "::group::foo"
-          echo "foo"
+          echo "foo1"
+          echo "::group::bar"
+          echo "bar1"
       - run: |
-          echo "bar"
+          echo "zoo"
