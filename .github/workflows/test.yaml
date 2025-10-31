@@ -1,13 +1,12 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - run: |
+          echo "::group::foo"
+          echo "foo"
+      - run: |
+          echo "bar"
