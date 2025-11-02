@@ -9,6 +9,7 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "yooooo" > yooo.txt
+      - run: echo "" >> .github/workflows/wc-ghalint.yaml
       - uses: suzuki-shunsuke/commit-action@pr/224
         with:
           app_id: ${{ vars.APP_ID }}
