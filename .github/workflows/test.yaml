@@ -13,5 +13,4 @@ jobs:
         with:
           app_id: ${{ vars.APP_ID }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-          github_token: ${{ steps.token.outputs.token }}
           commit_message: "Add yooo.txt"
