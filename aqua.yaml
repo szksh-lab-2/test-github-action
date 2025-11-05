@@ -2,13 +2,12 @@
 # aqua - Declarative CLI Version Manager
 # https://aquaproj.github.io/
 checksum:
-  # Enable Checksum Verification
-  # https://aquaproj.github.io/docs/tutorial-extras/checksum/
   enabled: true
   require_checksum: true
 registries:
   - type: standard
-    ref: v4.92.2 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.433.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
   - import: aqua/*.yaml
+  - name: suzuki-shunsuke/pinact@v3.4.2

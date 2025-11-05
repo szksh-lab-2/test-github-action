@@ -8,11 +8,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           persist-credentials: "false"
+      - uses: aquaproj/aqua-installer@11dd79b4e498d471a9385aa9fb7f62bb5f52a73c # v4.0.4
+        with:
+          aqua_version: v2.55.1
       - run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-      - run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          brew install pinact
-      - run: |
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           pinact run --check
+        env:
+          AQUA_GITHUB_TOKEN: ${{github.token}}
