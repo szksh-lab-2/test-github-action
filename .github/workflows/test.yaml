@@ -13,6 +13,8 @@ jobs:
       - run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install pinact
+        env:
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
       - run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           pinact run --check
