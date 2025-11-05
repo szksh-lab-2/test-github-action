@@ -10,5 +10,9 @@ jobs:
           persist-credentials: "false"
       - run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install pinact
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           pinact run --check
