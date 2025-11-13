@@ -1,0 +1,2 @@
+packages:
+  - name: jedisct1/minisign@0.12
