@@ -36,8 +36,8 @@ jobs:
       - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
           name: aqua
-      - run: mkdir -p ~/.local/share
-      - run: tar -C ~/.local/share -xvf aqua.tar.gz
+      - run: mkdir -p ~/.local/share/aquaproj-aqua
+      - run: tar -C ~/.local/share/aquaproj-aqua -xvf aqua.tar.gz
       - run: rm aqua.tar.gz
       - run: ls -lh ~/.local/share/aquaproj-aqua
       - run: ls -lh ~/.local/share/aquaproj-aqua/bin
