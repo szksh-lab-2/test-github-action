@@ -1,0 +1,21 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/aqua-yaml.json
+# aqua - Declarative CLI Version Manager
+# https://aquaproj.github.io/
+checksum:
+  enabled: true
+  require_checksum: true
+registries:
+  - type: standard
+    ref: v4.434.0  # renovate: depName=aquaproj/aqua-registry
+packages:
+  - name: jedisct1/minisign
+    version: "0.12" # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/minisign/aqua.yaml#L14
+  - name: jedisct1/minisign
+    version: "0.11" # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/minisign/aqua.yaml#L16
+  - name: cli/cli
+    version: v2.82.1 # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/ghattestation/aqua.yaml#L10
+  - name: sigstore/cosign
+    version: v3.0.2 # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/cosign/aqua.yaml#L14
+  - name: slsa-framework/slsa-verifier
+    version: v2.7.1 # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/slsa/aqua.yaml#L14
