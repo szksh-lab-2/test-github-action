@@ -1,2 +1,3 @@
 packages:
-  - name: cli/cli@v2.83.0
+  - name: cli/cli
+    version: v2.82.1 # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/ghattestation/aqua.yaml#L10

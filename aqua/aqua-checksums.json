@@ -1,0 +1,124 @@
+{
+  "checksums": [
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_linux_amd64.tar.gz",
+      "checksum": "AFADA88676DFCCEA384E6CC28AE990B3E31BBC55F9D75C4697F902C757FA462B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_linux_arm64.tar.gz",
+      "checksum": "80B467DAABEABF4379B5B7138F4B8B47F56670CC615AB288361A602CE413D8BF",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_macOS_amd64.zip",
+      "checksum": "83499EDD5830F345E01E187E4593A46919BD7440B43C5AABE2442AE918CAD9F1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_macOS_arm64.zip",
+      "checksum": "8CF015D101A5A43BBF662155D47BA6242BD1A1630C814E764254EFA86E448BA7",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_windows_amd64.zip",
+      "checksum": "17BB2A19D25887CEBD3B0EE2D3A3FDF56791EB0DF15CF34B068FAC56212F690B",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/cli/cli/v2.82.1/gh_2.82.1_windows_arm64.zip",
+      "checksum": "9922588AC432F2A25E9FFECACD3A31B9E7B1F093B3B5F9E8AFE89879EF25E2C0",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.11/minisign-0.11-linux.tar.gz",
+      "checksum": "F0A0954413DF8531BEFED169E447A66DA6868D79052ED7E892E50A4291AF7AE0",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.11/minisign-0.11-macos.zip",
+      "checksum": "E7C410AE8B8960D7087392472B040BDA9B2F307C76DF0384AC37F9AD103FC893",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.11/minisign-0.11-win64.zip",
+      "checksum": "B9C31C2C3034F81F0E5F5D92CBCC20E67A9671B6E5455661588638848DC58031",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.12/minisign-0.12-linux.tar.gz",
+      "checksum": "9A599B48BA6EB7B1E80F12F36B94CECA7C00B7A5173C95C3EFC88D9822957E73",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.12/minisign-0.12-macos.zip",
+      "checksum": "89000B19535765F9CFFC65A65D64A820F433EF6DB8020667F7570E06BF6AAC63",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/jedisct1/minisign/0.12/minisign-0.12-win64.zip",
+      "checksum": "37B600344E20C19314B2E82813DB2BFDCC408B77B876F7727889DBD46D539479",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sigstore/cosign/v3.0.2/cosign-darwin-amd64",
+      "checksum": "0FC2B6F16B900ABDFDA3153B11FC435A8CBE3830E8E820FE8AD5FE4149A5B472",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sigstore/cosign/v3.0.2/cosign-darwin-arm64",
+      "checksum": "3823B044DE184DA21E300BC5E20DD29D3FA9243AF3BA70C4A5DA1712F3385D46",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sigstore/cosign/v3.0.2/cosign-linux-amd64",
+      "checksum": "46DBDCB5467A3DFEC2526923D0B3365E40C8D9DC00EC23D5ACA3437449E8CBFD",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sigstore/cosign/v3.0.2/cosign-linux-arm64",
+      "checksum": "17FD784737CA54D7D8A343C82DA6C5D6DBDEE971E66644D923D1B057FB97D7ED",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/sigstore/cosign/v3.0.2/cosign-windows-amd64.exe",
+      "checksum": "7A137280D8686665CEB4D8565DF2A0AC63F28031E014CDCAE5D56891A6C8A400",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-darwin-amd64",
+      "checksum": "4BAF25415727821F847A38BCCEDC86C3E5B17CBFC2EB534CD554FEB6C856D6F1",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-darwin-arm64",
+      "checksum": "39ABFCF5F1D690C3E889CE3D2D6A8B87711424D83368511868D414E8F8BCB05C",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-linux-amd64",
+      "checksum": "946DBEC729094195E88EF78E1734324A27869F03E2C6BD2F61CBC06BD5350339",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-linux-arm64",
+      "checksum": "5D3B2349EDE7BFEC19E7A21569F18B9F7410145AD12E9584B175370669E14061",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-windows-amd64.exe",
+      "checksum": "1D8F61AD747ECC3D375D2A563CEBF2991748B7DA1A9BDA9A500804C3C499E3C0",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/slsa-framework/slsa-verifier/v2.7.1/slsa-verifier-windows-arm64.exe",
+      "checksum": "44144E98328D221F0490EF6B4A58A465DEFE8F697F387ABBBF07EF5ADB68D4AC",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.434.0/registry.yaml",
+      "checksum": "C36EA000C31FFD843B875F5C2C5ECA7FF45F20F3C8E85D648210063959B556DF",
+      "algorithm": "sha256"
+    }
+  ]
+}
