@@ -36,6 +36,7 @@ jobs:
         with:
           name: aqua
           path: ~/.local/share/aquaproj-aqua
+      - run: ls -lh ~/.local/share/aquaproj-aqua/bin
       - name: Set $PATH
         run: echo "$HOME/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
       - run: cosign version
