@@ -1,5 +1,0 @@
-packages:
-  - name: jedisct1/minisign
-    version: "0.12" # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/minisign/aqua.yaml#L14
-  - name: jedisct1/minisign
-    version: "0.11" # https://github.com/aquaproj/aqua/blob/v2.55.1/pkg/minisign/aqua.yaml#L16

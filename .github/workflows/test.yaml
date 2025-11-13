@@ -14,11 +14,12 @@ jobs:
         with:
           aqua_version: v2.55.1
           aqua_opts: ""
+      - name: Create a tarball
+        run: tar cvzf aqua.tar.gz "$(aqua root-dir)"
       - uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: aqua
-          path: ~/.local/share/aquaproj-aqua
-          include-hidden-files: true
+          path: aqua.tar.gz
 
   test:
     runs-on: ubuntu-24.04
@@ -35,7 +36,11 @@ jobs:
       - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
           name: aqua
-          path: ~/.local/share/aquaproj-aqua
+          path: aqua.tar.gz
+      - run: mkdir -p ~/.local/share
+      - run: tar xvzf aqua.tar.gz -C ~/.local/share
+      - run: rm aqua.tar.gz
+      - run: ls -lh ~/.local/share/aquaproj-aqua
       - run: ls -lh ~/.local/share/aquaproj-aqua/bin
       - name: Set $PATH
         run: echo "$HOME/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
