@@ -1,13 +1,17 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions: {}
+    timeout-minutes: 10
     steps:
-      - run: echo "$PAYLOAD"
+      - run: exit 1
+      - run: |
+          echo 'foo={"title": "hello"}' >> "$GITHUB_OUTPUT"
+        id: title
+        if: always()
+      - run: echo "$TITLE"
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          TITLE: ${{fromJSON(steps.title.outputs.foo).title}} # This always causes an error
