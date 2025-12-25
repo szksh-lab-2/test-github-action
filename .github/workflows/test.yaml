@@ -1,13 +1,13 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
     steps:
-      - run: echo "$PAYLOAD"
+      - run: gh -R "$GITHUB_REPOSITORY" issue comment 303 --body "$PAYLOAD"
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          GH_TOKEN: ${{github.token}}
+          PAYLOAD: ${{ secrets.TEST_SECRET }}
