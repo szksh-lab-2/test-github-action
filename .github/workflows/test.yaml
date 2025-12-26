@@ -1,13 +1,11 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@pr/838
