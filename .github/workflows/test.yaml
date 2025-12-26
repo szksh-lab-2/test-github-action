@@ -18,3 +18,4 @@ jobs:
           # app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           skip_push: true
           review: true
+          update: true
