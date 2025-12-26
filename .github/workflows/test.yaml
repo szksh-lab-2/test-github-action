@@ -7,7 +7,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
-      actions: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,3 +17,4 @@ jobs:
           # app_id: ${{ vars.APP_ID }}
           # app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           skip_push: true
+          review: true
