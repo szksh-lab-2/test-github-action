@@ -14,5 +14,6 @@ jobs:
           persist-credentials: false
       - uses: suzuki-shunsuke/pinact-action@pr/838
         with:
-          app_id: ${{ vars.APP_ID }}
-          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          # app_id: ${{ vars.APP_ID }}
+          # app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          skip_push: true
