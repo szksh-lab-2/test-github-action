@@ -1,13 +1,21 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@pr/847
+        with:
+          app_id: ${{ vars.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          skip_push: true
+          review: true
+          reviewdog_fail_level: error
