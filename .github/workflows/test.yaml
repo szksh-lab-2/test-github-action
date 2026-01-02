@@ -1,13 +1,15 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - run: echo "zoo" > zoo.txt
+      - uses: suzuki-shunsuke/commit-action@feat-parent-branch
+        with:
+          files: zoo.txt
+          branch: zoo-94
+          parent_branch: test-forbid-tag
