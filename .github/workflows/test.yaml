@@ -1,13 +1,19 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - run: mkdir fooo
+      - run: echo bar > fooo/bar.txt
+      - run: echo zoo > fooo/zoo.txt
+      - uses: suzuki-shunsuke/commit-action@87b297f0ce551411b43d1880f4fb3cbc60381055 # v0.0.14
+        with:
+          files: fooo
