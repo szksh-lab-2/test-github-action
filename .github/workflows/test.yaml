@@ -14,6 +14,7 @@ jobs:
       - run: mkdir fooo
       - run: echo bar > fooo/bar.txt
       - run: echo zoo > fooo/zoo.txt
-      - uses: suzuki-shunsuke/commit-action@87b297f0ce551411b43d1880f4fb3cbc60381055 # v0.0.14
+      # - uses: suzuki-shunsuke/commit-action@87b297f0ce551411b43d1880f4fb3cbc60381055 # v0.0.14
+      - uses: suzuki-shunsuke/commit-action@pr/257
         with:
           files: fooo
