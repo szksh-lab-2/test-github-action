@@ -1,13 +1,23 @@
----
-name: test
-on:
-  push:
-    tags:
-      - v*
+name: Create an issue
+on: pull_request
 jobs:
-  test:
+  create_issue:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    # permissions: {}
+    permissions:
+      # issues: write
+      contents: read
     steps:
-      - run: echo "$PAYLOAD"
+      # - run: gh issue create -R "$GITHUB_REPOSITORY" -t test -b test
+      #   env:
+      #     GH_TOKEN: ${{github.token}}
+      - run: |
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${GITHUB_REPOSITORY}/issues" \
+            -f 'title=test' -f 'body=test'
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          GH_TOKEN: ${{github.token}}
