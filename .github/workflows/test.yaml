@@ -1,13 +1,17 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: k1LoW/gh-setup@4cf7e462754c30e2a61ac17893a67e02edb1096f # v1.11.0
+        with:
+          repo: github.com/k1LoW/octocov
+      - uses: aquaproj/aqua-installer@5e54e5cee8a95ee2ce7c04cb993da6dfad13e59c # v3.1.2
+        with:
+          aqua_version: v2.48.1
+      - run: gcloud -v
