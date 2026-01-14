@@ -1,13 +1,20 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: "false"
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install pinact
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+      - run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          pinact run --check
