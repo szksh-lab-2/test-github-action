@@ -12,3 +12,4 @@ registries:
 packages:
   # Split packages per package with `import` to avoid pull requests' conflict
   - import: aqua/*.yaml
+  - name: suzuki-shunsuke/pinact@v3.3.0-5

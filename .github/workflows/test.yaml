@@ -1,13 +1,19 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - run: echo "$PAYLOAD"
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: aquaproj/aqua-installer@v4.0.0
+        with:
+          aqua_version: v2.53.2
+      - run: pinact run --review --check --diff
         env:
-          PAYLOAD: ${{ toJson(github.event) }}
+          GITHUB_TOKEN: ${{github.token}}
