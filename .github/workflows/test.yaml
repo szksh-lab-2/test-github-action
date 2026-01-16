@@ -1,12 +1,20 @@
 ---
 name: test
-on: pull_request
+on:
+  pull_request:
+    types: [closed]
+  pull_request_review:
+    types: [submitted]
 jobs:
   test:
+    if: |
+      endsWith(github.event.pull_request.user.login, '[bot]') &&
+      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
+      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    permissions: {}
+    permissions:
+      pull-requests: write
+      contents: read
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
