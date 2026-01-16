@@ -1,13 +1,21 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
-  test:
+  test-1:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - run: npx --yes --package "renovate" -c 'renovate --version'
+
+  test-2:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: npx --yes --package "renovate@latest" -c 'renovate --version'
+
+  test-3:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: 22
+      - run: npx --yes --package "renovate" -c 'renovate --version'
