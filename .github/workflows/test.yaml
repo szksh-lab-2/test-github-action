@@ -7,6 +7,7 @@ jobs:
     timeout-minutes: 15
     permissions: {}
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@latest
