@@ -13,3 +13,5 @@ jobs:
         with:
           persist-credentials: false
       - uses: suzuki-shunsuke/pinact-action@latest
+        with:
+          separator: "  # "
