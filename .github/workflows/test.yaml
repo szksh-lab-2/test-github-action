@@ -7,11 +7,13 @@ jobs:
     timeout-minutes: 15
     permissions:
       pull-requests: write
-      contents: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - uses: suzuki-shunsuke/pinact-action@latest
-        with:
-          separator: "  # "
+      - env:
+          GH_TOKEN: ${{github.token}}
+          PR: ${{github.event.number}}
+        run: |
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${GITHUB_REPOSITORY}/pulls/${PR}/update-branch"
