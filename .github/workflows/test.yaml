@@ -7,7 +7,7 @@ jobs:
     timeout-minutes: 15
     permissions:
       pull-requests: write
-      contents: read
+      contents: write
     steps:
       - env:
           GH_TOKEN: ${{github.token}}
