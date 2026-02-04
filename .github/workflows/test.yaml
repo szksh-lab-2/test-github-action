@@ -5,10 +5,10 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    permissions:
-      pull-requests: write
-      contents: write
+    permissions: {}
     steps:
       - uses: suzuki-shunsuke/update-pr-branch-action@latest
         with:
           max_behind_by: 0
+          app_id: ${{ vars.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
