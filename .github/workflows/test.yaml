@@ -1,20 +1,16 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    permissions:
-      pull-requests: write
-      contents: read
+    permissions: {}
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - uses: suzuki-shunsuke/update-pr-branch-action@latest
+        with:
+          # max_behind_by: 0
+          app_id: ${{ vars.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          files: |
+            aqua/**
