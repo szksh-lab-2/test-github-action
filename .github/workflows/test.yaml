@@ -1,13 +1,14 @@
 ---
 name: test
-on:
-  push:
-    tags:
-      - v*
+on: pull_request
 jobs:
   test:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{ toJson(github.event) }}
+      - uses: suzuki-shunsuke/update-pr-branch-action@latest
+        with:
+          max_behind_by: 0
