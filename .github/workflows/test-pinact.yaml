@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           persist-credentials: false
-      - uses: actions/cache@v3.3.1
+      - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3.5.0
   actionlint:
     uses: suzuki-shunsuke/actionlint-workflow/.github/workflows/actionlint.yaml@v0.5.0
     with:
