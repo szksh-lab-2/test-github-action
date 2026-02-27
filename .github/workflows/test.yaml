@@ -13,4 +13,4 @@ jobs:
           persist-credentials: false
       - run: git submodule init
       - run: git submodule update --remote
-      - uses: suzuki-shunsuke/commit-action@v0.1.0
+      - uses: suzuki-shunsuke/commit-action@pr/311
