@@ -15,9 +15,9 @@ jobs:
     steps:
       - run: |
           if test "$TARGET" != "foo"; then
-            sleep 5
             exit 1
           fi
+          sleep 5
         env:
           TARGET: ${{ matrix.target }}
 
