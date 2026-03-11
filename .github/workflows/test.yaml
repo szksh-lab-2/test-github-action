@@ -1,20 +1,28 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    permissions:
-      pull-requests: write
-      contents: read
+    timeout-minutes: 5
+    permissions: {}
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - foo
+          - bar
+    outputs:
+      result: ${{ matrix.target }}
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - run: echo ""
+
+  label:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    needs: [test]
+    permissions: {}
+    steps:
+      - run: echo "$RESULTS"
+        env:
+          RESULTS: ${{ needs.test.outputs.result }}
