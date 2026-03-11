@@ -22,6 +22,7 @@ jobs:
     timeout-minutes: 5
     needs: [test]
     permissions: {}
+    if: always()
     steps:
       - run: echo "$RESULT"
         env:
