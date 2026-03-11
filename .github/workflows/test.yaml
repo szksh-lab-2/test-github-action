@@ -14,7 +14,7 @@ jobs:
           - bar
     steps:
       - run: |
-          if test "$TARGET" = "foo"; then
+          if test "$TARGET" != "foo"; then
             sleep 5
             exit 1
           fi
