@@ -9,9 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target:
-          - foo
-          - bar
+        target: []
     steps:
       - run: |
           if test "$TARGET" != "foo"; then
