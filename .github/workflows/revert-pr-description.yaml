@@ -18,11 +18,11 @@ jobs:
           DEFAULT_TEMPLATE: |
             ## Why revert PR?
 
-            **PLEASE DESCRIBE WHY YOU REVERT PR**
+            **Please describe why you're reverting PR.**
         run: |
           set -eu
 
-          gh pr comment -R "$GITHUB_REPOSITORY" "$NUMBER" --body "[workflow]($WORKFLOW_URL) :warning: Don't forget to describe why you're reverting a PR in this PR description."
+          gh pr comment -R "$GITHUB_REPOSITORY" "$NUMBER" --body "[workflow]($WORKFLOW_URL) :warning: @$GITHUB_ACTOR Don't forget to describe why you're reverting a PR in this PR description."
 
           update() {
             local path=$1
