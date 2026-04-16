@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened]
 jobs:
-  require-approval:
+  update-revert-pr-description:
     if: startsWith(github.event.pull_request.title, 'Revert ')
     timeout-minutes: 10
     runs-on: ubuntu-24.04
@@ -16,7 +16,7 @@ jobs:
           NUMBER: ${{github.event.pull_request.number}}
           WORKFLOW_URL: ${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}
           DEFAULT_TEMPLATE: |
-            ## Why revert PR?
+            ## Why revert?
 
             **Please describe why you're reverting PR.**
         run: |
@@ -31,7 +31,7 @@ jobs:
 
             $template"
           }
-          for path in .github/pull_request_template.md docs/pull_request_template.md; do
+          for path in .github/PULL_REQUEST_TEMPLATE/revert_pull_request.md .github/pull_request_template.md docs/pull_request_template.md; do
             if [ -f "$path" ]; then
               update "$path"
               exit 0
