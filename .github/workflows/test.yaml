@@ -9,5 +9,3 @@ jobs:
       contents: write
     steps:
       - uses: suzuki-shunsuke/commit-action@pr/370
-        with:
-          empty_commit: true
