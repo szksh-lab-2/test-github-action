@@ -13,3 +13,6 @@ jobs:
           persist-credentials: false
       - run: echo "foo" >> foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/372
+        with:
+          branch: test-orphan
+          orphan: true
