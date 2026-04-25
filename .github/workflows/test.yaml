@@ -13,5 +13,3 @@ jobs:
           persist-credentials: false
       - run: touch foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/370
-        with:
-          empty_commit: true
