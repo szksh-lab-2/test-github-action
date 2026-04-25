@@ -14,5 +14,6 @@ jobs:
       - run: echo "foo" >> foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/372
         with:
-          branch: test-orphan
+          branch: test-orphan-2
           orphan: true
+          use_base_tree: false
