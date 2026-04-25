@@ -13,5 +13,3 @@ jobs:
           persist-credentials: false
       - run: echo "foo" >> foo.txt
       - uses: suzuki-shunsuke/commit-action@pr/372
-        with:
-          force_push: true
