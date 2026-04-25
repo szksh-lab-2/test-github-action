@@ -12,4 +12,7 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "foo" >> foo.txt
-      - uses: suzuki-shunsuke/commit-action@pr/370
+      - uses: suzuki-shunsuke/commit-action@pr/371
+        with:
+          force_push: true
+          parent_branch: main
