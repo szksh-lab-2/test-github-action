@@ -1,0 +1,43 @@
+name: Update Revert PR description using template
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  update-revert-pr-description:
+    if: startsWith(github.event.pull_request.title, 'Revert ')
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write # To get pull requests
+    steps:
+      - env:
+          GH_TOKEN: ${{github.token}}
+          BODY: ${{github.event.pull_request.body}}
+          NUMBER: ${{github.event.pull_request.number}}
+          WORKFLOW_URL: ${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}
+          DEFAULT_TEMPLATE: |
+            ## Why revert?
+
+            **Please describe why you're reverting PR.**
+        run: |
+          set -eu
+
+          gh pr comment -R "$GITHUB_REPOSITORY" "$NUMBER" --body "[workflow]($WORKFLOW_URL) :warning: @$GITHUB_ACTOR Don't forget to describe why you're reverting a PR in this PR description."
+
+          update() {
+            local path=$1
+            template=$(cat "$path")
+            gh pr edit -R "$GITHUB_REPOSITORY" "$NUMBER" --body "$BODY
+
+            $template"
+          }
+          for path in .github/PULL_REQUEST_TEMPLATE/revert_pull_request.md .github/pull_request_template.md docs/pull_request_template.md; do
+            if [ -f "$path" ]; then
+              update "$path"
+              exit 0
+            fi
+          done
+
+          gh pr edit -R "$GITHUB_REPOSITORY" "$NUMBER" --body "$BODY
+
+          $DEFAULT_TEMPLATE"
