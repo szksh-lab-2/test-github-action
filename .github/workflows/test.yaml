@@ -12,8 +12,8 @@ jobs:
         with:
           persist-credentials: false
       - run: echo "foo" >> foo.txt
-      - uses: suzuki-shunsuke/commit-action@pr/372
+      - uses: suzuki-shunsuke/commit-action@pr/373
         with:
+          app_id: ${{ vars.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
           branch: test-orphan-2
-          orphan: true
-          use_base_tree: false
