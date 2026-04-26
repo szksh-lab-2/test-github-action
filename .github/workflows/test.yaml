@@ -1,20 +1,19 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
-      pull-requests: write
-      contents: read
+      contents: write
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - run: echo "foo" >> foo.txt
+      - uses: suzuki-shunsuke/commit-action@pr/373
+        with:
+          app_id: ${{ vars.APP_ID }}
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          branch: test-orphan-2
