@@ -1,20 +1,20 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
-      pull-requests: write
-      contents: read
+      pull-requests: read
+      contents: write
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - env:
+          GH_TOKEN: ${{github.token}}
+          PR: ${{github.event.number}}
+        run: |
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${GITHUB_REPOSITORY}/pulls/${PR}/update-branch"
