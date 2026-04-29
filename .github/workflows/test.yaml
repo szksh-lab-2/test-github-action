@@ -1,20 +1,17 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       pull-requests: write
-      contents: read
+      contents: write
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@latest
+        with:
+          separator: "  # "
