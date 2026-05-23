@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: suzuki-shunsuke/pr-unified-diff-action@v0.0.1
         id: diff
+      - run: cat "$DIFF_FILE"
+        env:
+          DIFF_FILE: ${{ steps.diff.outputs.diff_path }}
       - uses: suzuki-shunsuke/pinact-action@pr/1065
         with:
           no_api: true
