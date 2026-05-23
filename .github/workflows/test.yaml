@@ -1,20 +1,21 @@
 ---
 name: test
-on:
-  pull_request:
-    types: [closed]
-  pull_request_review:
-    types: [submitted]
+on: pull_request
 jobs:
   test:
-    if: |
-      endsWith(github.event.pull_request.user.login, '[bot]') &&
-      ((github.event_name == 'pull_request_review' && github.event.review.state == 'approved') ||
-      github.event_name == 'pull_request')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       pull-requests: write
       contents: read
     steps:
-      - uses: suzuki-shunsuke/notify-bot-pr-event-action@pr/1
+      - uses: suzuki-shunsuke/pr-unified-diff-action@v0.0.1
+        id: diff
+      - run: cat "$DIFF_FILE"
+        env:
+          DIFF_FILE: ${{ steps.diff.outputs.diff_path }}
+      - uses: suzuki-shunsuke/pinact-action@pr/1065
+        with:
+          no_api: true
+          fix: false
+          diff_file: ${{ steps.diff.outputs.diff_path }}
