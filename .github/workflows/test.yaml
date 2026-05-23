@@ -19,6 +19,8 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           permission-contents: write
           permission-actions: write
+          permission-pull-requests: write
       - uses: suzuki-shunsuke/pinact-action@pr/1065
         with:
+          review: true
           github_token: ${{ steps.app-token.outputs.token }}
