@@ -6,8 +6,18 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_darwin_arm64.zip",
+      "checksum": "83EFCE75DAB0F6C955E009D018EFA1FA065004BEE760C5D84C13D2E4BA06AF1C",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_linux_amd64.zip",
       "checksum": "6B9D9C9A7B834237B6579353477DF3BB3730C11788170AD2A9E5D1230ABC6216",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_linux_arm64.zip",
+      "checksum": "F6CAE75B60C985887D1E1DAC2905D1468648F6D6753A709B6F9E73D85A6205CB",
       "algorithm": "sha256"
     },
     {
@@ -16,33 +26,33 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Darwin_arm64.tar.gz",
-      "checksum": "DB5FE19D29346C23D7468B6A1ACEBBF9C369C805AE8CB97159881BFAADFECB5A",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Darwin_arm64.tar.gz",
+      "checksum": "C28DEF83AF6C5AA8728D6D18160546AFD3E5A219117715A2C6C023BD16F14D10",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Darwin_x86_64.tar.gz",
-      "checksum": "361F3513252D5F64C822CFAC273A7F9AC9C4DCC1D38FAD7974100070A09CFC7B",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Darwin_x86_64.tar.gz",
+      "checksum": "9BAADB110C87F22C55688CF4A966ACCE3006C7A4A962732D6C8B45234C454C6E",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Linux_arm64.tar.gz",
-      "checksum": "E8BC967EE94390E2ACA889E1B8622AD598CD15D5B5B67C4B42AC8EA2EDE6B5BD",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Linux_arm64.tar.gz",
+      "checksum": "B6AFF657B39E9267A258E8FA66D616F7221AEC5975D0251DAC76043BAD0FA177",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Linux_x86_64.tar.gz",
-      "checksum": "736DEC2BDECE94F5A17DBB67A3CC6CA6279ABA614C2AFCAD466E824452E53305",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Linux_x86_64.tar.gz",
+      "checksum": "AD5CE7D5FFA52AAA7EC8710A8FA764181B6CECAAB843CC791E1CCE1680381569",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Windows_arm64.tar.gz",
-      "checksum": "ACFFCA88DE97D85F9CF7A84C2CADAE42C3F886AA4A51D956CF39FA3E97DA1739",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Windows_arm64.tar.gz",
+      "checksum": "72ABE9907454C5697777CFFF1D0D03DB8F5A9FD6950C609CA397A90D41AB65D7",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/reviewdog/reviewdog/v0.15.0/reviewdog_0.15.0_Windows_x86_64.tar.gz",
-      "checksum": "64745567CDA57D1138D6185E1CE6C3FFC615AC4DC385F6CB89ECA82F2FDB2A43",
+      "id": "github_release/github.com/reviewdog/reviewdog/v0.21.0/reviewdog_0.21.0_Windows_x86_64.tar.gz",
+      "checksum": "97C733E492DEC1FD83B9342C25A384D5AB6EBFA72B6978346E9A436CAD1853F6",
       "algorithm": "sha256"
     },
     {
@@ -106,39 +116,39 @@
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_darwin_amd64.tar.gz",
-      "checksum": "C576EC52A5777255C074B0C20CDCD83060E4E502BC1FEA05EE8B149B35A0867F",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_darwin_amd64.tar.gz",
+      "checksum": "5733518D44F7EAE2B4B16B0EA6617597C89B2EB084A4E6101A1DC03716266B6C",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_darwin_arm64.tar.gz",
-      "checksum": "336ACCC20169D49EBA7DDBCF030758BE2DC6655BC3EC2F2AC03DE833CE35492E",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_darwin_arm64.tar.gz",
+      "checksum": "E854EE0AA0DD83273D3B68E335BC025FDA721A32A3373091DFDEC3A582D1EC41",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_linux_amd64.tar.gz",
-      "checksum": "8AB2CB63A60CCD8FDC9E0F71B7FD2D9B7374054DEA5F8AE63DD2E3E7D233686D",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_linux_amd64.tar.gz",
+      "checksum": "F54EC24CE1C344B611F6D80155396101D38E72B7F88E2CA8B9BFADC16307AE35",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_linux_arm64.tar.gz",
-      "checksum": "F51B84DCA69C8AECD992C606D23F735EC37BE692CEF2E895270B8E72B84183C4",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_linux_arm64.tar.gz",
+      "checksum": "EC8D94494C70F4285A39375F385A4E52F945C597A3A5361ADF3DD9F1C8263CE4",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_windows_amd64.zip",
-      "checksum": "F603D6EDD76AB44C1C710A2B1E50905D444C9EFFA848BFB537CA4A1ABD93A20D",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_windows_amd64.zip",
+      "checksum": "4ABEBC98AF160C06C988F1421F0CF991FBDBFB6789CC1681C5C8E33C48A70160",
       "algorithm": "sha256"
     },
     {
-      "id": "github_release/github.com/suzuki-shunsuke/nllint/v0.1.0/nllint_windows_arm64.zip",
-      "checksum": "4AEB83825367044C345128D34E38470AB53BED2D76491FB6F8A6737EC619DB90",
+      "id": "github_release/github.com/suzuki-shunsuke/nllint/v1.0.0/nllint_windows_arm64.zip",
+      "checksum": "7493FF32F027507BDA9E9308E4AA25D640AA16B0287F7656A7C0A61AF907D270",
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.92.2/registry.yaml",
-      "checksum": "3DE8A454E1D3FFC37112534057FD39F78E2F2C15ED048AF14F7340BB6D4DEFF52D6C3368DC7CD3CA27B8E7EAC3ED42042EEF299CC825B1929993EFB8195C4E0E",
-      "algorithm": "sha512"
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.515.0/registry.yaml",
+      "checksum": "C84C4E3B5E20ED4B3C3F5362A2AA06DF79DEA9EBA8E950DDD7CDFCFE008F47A2",
+      "algorithm": "sha256"
     }
   ]
 }
