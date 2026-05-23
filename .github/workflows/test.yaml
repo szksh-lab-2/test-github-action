@@ -14,4 +14,5 @@ jobs:
       - uses: suzuki-shunsuke/pinact-action@pr/1065
         with:
           no_api: true
+          fix: false
           diff_file: ${{ steps.diff.outputs.diff_path }}
