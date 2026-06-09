@@ -8,4 +8,4 @@ jobs:
     permissions:
       contents: read
     steps:
-      - run: echo hello
+      - run: "echo hello!"
