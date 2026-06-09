@@ -1,0 +1,19 @@
+name: Check Startup
+on:
+  workflow_run:
+    workflows: [test]
+    types: [completed]
+
+jobs:
+  check-startup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions: {}
+    steps:
+      - run: echo "hello"
+        env:
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          PRS: ${{ github.event.workflow_run.pull_requests }}
+          LOGS_URL: ${{ github.event.workflow_run.logs_url }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WORKFLOW_RUN: ${{toJSON(github.event.workflow_run)}}
