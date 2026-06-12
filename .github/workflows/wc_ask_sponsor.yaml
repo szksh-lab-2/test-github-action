@@ -26,9 +26,12 @@ jobs:
           AUTHOR: ${{inputs.author}}
           PR_NUMBER: ${{inputs.pr_number}}
           BODY: |
-            We spend a lot of time maintaining aqua and aqua-registry every day.
-            Today, aqua-registry is used not only by aqua, but also by tools like mise and docker agent.
-            If these projects help you, please consider supporting us via GitHub Sponsors.
+            # Sponsor Our Project
+
+            We dedicate a significant amount of time every day to maintaining aqua and aqua-registry.
+            Today, aqua-registry is used not only by aqua itself, but also by projects such as mise and Docker Agent.
+            If you find these projects useful, please consider supporting us through GitHub Sponsors.
+
             https://github.com/sponsors/aquaproj
         run: |
           set -eu
