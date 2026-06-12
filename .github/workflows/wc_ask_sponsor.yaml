@@ -35,10 +35,10 @@ jobs:
           is_sponsor=$(gh api graphql \
             -F "sponsorable=aquaproj" \
             -F "author=$AUTHOR" \
-            -q '.data.user.isSponsoredBy' \
+            -q '.data.organization.isSponsoredBy' \
             -f query='
               query($sponsorable: String!, $author: String!) {
-                user(login: $sponsorable) {
+                organization(login: $sponsorable) {
                   isSponsoredBy(accountLogin: $author)
                 }
               }')
