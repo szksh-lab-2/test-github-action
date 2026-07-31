@@ -1,0 +1,6 @@
+name: foo
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo foo
