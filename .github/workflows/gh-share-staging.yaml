@@ -1,0 +1,13 @@
+---
+name: test
+on:
+  push:
+    branches:
+      - gh-share-staging
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions: {}
+    steps:
+      - run: echo hello
