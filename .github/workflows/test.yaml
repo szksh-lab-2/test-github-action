@@ -8,4 +8,5 @@ jobs:
     permissions:
       contents: read
     steps:
-      - run: echo hello
+      - run: sleep 60
+      - run: exit 1
