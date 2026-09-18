@@ -6,7 +6,7 @@ jobs:
   update-revert-pr-description:
     if: startsWith(github.event.pull_request.title, 'Revert ')
     timeout-minutes: 10
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       pull-requests: write # To get pull requests
     steps:

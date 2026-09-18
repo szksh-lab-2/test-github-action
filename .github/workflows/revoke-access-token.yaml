@@ -10,7 +10,7 @@ on:
 jobs:
   revoke:
     timeout-minutes: 10
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions: {}
     steps:
       - name: Check if the access token is available
