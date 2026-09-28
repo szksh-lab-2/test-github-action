@@ -3,9 +3,7 @@ name: test
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    uses: $/.github/workflows/test-2.yaml
     permissions:
       contents: read
-    steps:
-      - run: echo hello
+      pull-requests: write
