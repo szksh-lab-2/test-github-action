@@ -6,3 +6,4 @@ jobs:
     uses: $/.github/workflows/test-2.yaml
     permissions:
       contents: read
+      pull-requests: write
