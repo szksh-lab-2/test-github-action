@@ -8,6 +8,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - run: gh pr comment -R "$GITHUB_REPOSITORY" -b hello
+      - run: gh pr comment "$PR_NUMBER" -R "$GITHUB_REPOSITORY" -b hello
         env:
           GH_TOKEN: ${{github.token}}
+          PR_NUMBER: ${{github.event.number}}
