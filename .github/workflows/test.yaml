@@ -3,9 +3,9 @@ name: test
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
-    permissions:
-      contents: read
+    permissions: {}
     steps:
-      - run: echo hello
+      - run: touch /tmp/test.txt
+      - run: mv /tmp/test.txt test.txt
