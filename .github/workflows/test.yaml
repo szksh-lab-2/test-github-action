@@ -3,9 +3,12 @@ name: test
 on: pull_request
 jobs:
   test:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write
     steps:
-      - run: echo hello
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: suzuki-shunsuke/pinact-action@v3.1.0
