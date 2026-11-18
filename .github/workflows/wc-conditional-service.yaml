@@ -1,0 +1,42 @@
+name: wc-conditional-service
+on:
+  workflow_call:
+    inputs:
+      mysql:
+        type: boolean
+        default: false
+      mysql-version:
+        type: string
+        default: "8.4"
+permissions: {}
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions: {}
+    services:
+      # image を空文字列にすると service は起動しない（とドキュメントにある）ことを確かめる
+      mysql:
+        image: ${{ inputs.mysql && format('mysql:{0}', inputs.mysql-version) || '' }}
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - run: docker ps --format '{{.Image}} {{.Status}}'
+      - name: Check whether MySQL is running as expected
+        env:
+          EXPECT: ${{ inputs.mysql }}
+        run: |
+          if timeout 5 bash -c 'echo > /dev/tcp/127.0.0.1/3306' 2>/dev/null; then
+            running=true
+          else
+            running=false
+          fi
+          echo "expect=$EXPECT running=$running"
+          test "$EXPECT" = "$running"

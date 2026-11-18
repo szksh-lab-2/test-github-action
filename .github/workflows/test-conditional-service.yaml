@@ -1,0 +1,17 @@
+name: test-conditional-service
+on:
+  push:
+    branches: [test-conditional-service]
+  workflow_dispatch:
+permissions: {}
+jobs:
+  with-mysql:
+    uses: ./.github/workflows/wc-conditional-service.yaml
+    permissions: {}
+    with:
+      mysql: true
+  without-mysql:
+    uses: ./.github/workflows/wc-conditional-service.yaml
+    permissions: {}
+    with:
+      mysql: false
