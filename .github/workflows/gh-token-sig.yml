@@ -1,0 +1,43 @@
+name: gh-token-signing
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create commits with GITHUB_TOKEN and report verification
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          echo "actor: ${{ github.actor }}"
+          echo "token login: $(gh api user --jq '.login' 2>&1 || echo 'N/A for installation token')"
+          BASE=$(gh api repos/$REPO/git/refs/heads/main --jq '.object.sha')
+          BR=ghtkn-wf-$RUN
+          gh api repos/$REPO/git/refs --input - >/dev/null <<EOF
+          {"ref":"refs/heads/$BR","sha":"$BASE"}
+          EOF
+          check () { gh api repos/$REPO/commits/$2 --jq "{label:\"$1\", author_login:.author.login, committer_login:.committer.login, committer_name:.commit.committer.name, verified:.commit.verification.verified, reason:.commit.verification.reason}"; }
+          DEP_EMAIL="49699333+dependabot[bot]@users.noreply.github.com"
+          B64=$(printf 'A %s' "$RUN" | base64 -w0)
+          SHA=$(gh api --method PUT repos/$REPO/contents/wf-a-$RUN.txt --input - --jq '.commit.sha' <<EOF
+          {"message":"A author=dependabot committer omitted","content":"$B64","branch":"$BR","author":{"name":"dependabot[bot]","email":"$DEP_EMAIL"}}
+          EOF
+          )
+          check "A author=dependabot, committer omitted" "$SHA"
+          B64=$(printf 'B %s' "$RUN" | base64 -w0)
+          SHA=$(gh api --method PUT repos/$REPO/contents/wf-b-$RUN.txt --input - --jq '.commit.sha' <<EOF
+          {"message":"B no override","content":"$B64","branch":"$BR"}
+          EOF
+          )
+          check "B no override" "$SHA"
+          B64=$(printf 'C %s' "$RUN" | base64 -w0)
+          SHA=$(gh api --method PUT repos/$REPO/contents/wf-c-$RUN.txt --input - --jq '.commit.sha' <<EOF
+          {"message":"C author+committer=dependabot","content":"$B64","branch":"$BR","author":{"name":"dependabot[bot]","email":"$DEP_EMAIL"},"committer":{"name":"dependabot[bot]","email":"$DEP_EMAIL"}}
+          EOF
+          )
+          check "C author+committer=dependabot" "$SHA"
